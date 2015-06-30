@@ -1,2 +1,2 @@
 # NewsFeed_App
-NewsFeed / App
+NewsFeed / PhoneGap
