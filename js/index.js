@@ -12,7 +12,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-$("#log").html(id);		
-        console.log('Received Event: ' + id);
+//$("#log").html(id);
+console.log('Received Event: ' + id);
     }
 };
