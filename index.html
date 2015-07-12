@@ -36,9 +36,9 @@ $.getJSON("http://myhostmx.azurewebsites.net/", {cat: cat, ajax: 'true'}, functi
 	if(data_cat != ""){
 	var onclick = "newsfeed('"+data_cat+"');";
 	link_onclick = '<a href="#" onclick'+'="'+onclick+'"><i class="fa fa-refresh"></i></a>';
+	$("#news_title").html(''+data_cat+' (' + count_data_ajax + ') '+link_onclick+'');
 	}
 
-	options1 += 'Cat: '+data_cat+' (' + count_data_ajax + ') '+link_onclick+'<hr>';
 			for (var i = 0; i < count_data_ajax; i++) {
 				if (data_ajax[i].valor != "") {
 
@@ -57,8 +57,8 @@ window.load = newsfeed("");
 //});
 </script>
 
- <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+<div class="navbar navbar-default navbar-fixed-top">
+<div class="container">
         <div class="navbar-header">
           <a href="./index.html" class="navbar-brand">News Feed</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
@@ -67,6 +67,7 @@ window.load = newsfeed("");
             <span class="icon-bar"></span>
           </button>
         </div>
+<!--
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li class="dropdown">
@@ -79,16 +80,27 @@ window.load = newsfeed("");
               </ul>
             </li>
           </ul>
-<!--
+
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" target="_blank"></a></li>
           </ul>
--->
+
         </div>
-      </div>
-    </div>
+-->
+</div>
+</div>
 
 <div class="container page-header">
+<br>
+
+<div class="btn-group">
+  <a href="#" class="btn btn-default" id="news_title">Noticias</a>
+  <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+  <ul class="dropdown-menu">
+<li><a href="#" onclick="newsfeed('tecnologia');">Tecnologia</a></li>
+<li><a href="#" onclick="newsfeed('deportes');">Deportes</a></li>
+</ul>
+</div>
 
 
 <div id="log"></div>
