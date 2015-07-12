@@ -35,29 +35,58 @@ $.getJSON("http://myhostmx.azurewebsites.net/", {cat: cat, ajax: 'true'}, functi
 
 	if(data_cat != ""){
 	var onclick = "newsfeed('"+data_cat+"');";
-	link_onclick = '<a href="#" onclick'+'="'+onclick+'"><i class="fa fa-refresh"></i></a>';
-	$("#news_title").html(''+data_cat+' (' + count_data_ajax + ') '+link_onclick+'');
+	$("#news_title").html('<a href="#" onclick'+'="'+onclick+'">'+data_cat+' (' + count_data_ajax + ') <i class="fa fa-refresh"></i></a>');
 	} else {
 	var onclick = "newsfeed('');";
-	link_onclick = '<a href="#" onclick'+'="'+onclick+'"><i class="fa fa-refresh"></i></a>';
-	$("#news_title").html('Noticias (' + count_data_ajax + ') '+link_onclick+'');
+	$("#news_title").html('<a href="#" onclick'+'="'+onclick+'">Noticias (' + count_data_ajax + ') <i class="fa fa-refresh"></i></a>');
 	}
 
 			for (var i = 0; i < count_data_ajax; i++) {
 				if (data_ajax[i].valor != "") {
-
+					var onclick_nota = "load_nota("+data_ajax[i].id+")";
 					options2 += '' +
-					'<div class="media"><div class="media-left"><a href="#"><img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGU4MjQzMzljOSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0ZTgyNDMzOWM5Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNC41IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="></a></div>' +
-					'<div class="media-body"><h5 class="media-heading">' + data_ajax[i].Titulo + '</h5>' +
+					'<div class="media"><div class="media-left"><a href="#" onclick'+'="'+onclick_nota+'"><img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGU4MjQzMzljOSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0ZTgyNDMzOWM5Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNC41IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="></a></div>' +
+					'<div class="media-body"><h5 class="media-heading"><a href="#" onclick'+'="'+onclick_nota+'">' + data_ajax[i].Titulo + '</a></h5>' +
 					'' + data_ajax[i].Cuerpo + '' +
 					'</div></div>';
 				}
 			}
 $("#load_notas").html(options1 + options2);
-
 });
 }
 window.load = newsfeed("");
+
+function load_nota(id_nota) {
+if(load_nota != ""){
+var nota = '';
+
+$.getJSON("http://myhostmx.azurewebsites.net/ver_nota.php", {id_nota: id_nota, ajax: 'true'}, function (j) {
+	var data_ajax = j['nota'][0];
+	var data_cat = j['cat'];
+	var count_data_ajax = data_ajax.length;
+
+var titulo = data_ajax['Titulo'];
+var cuerpo = data_ajax['Cuerpo'];
+var fecha = data_ajax['FechaHoraPub'];
+
+var dateVal ="/Date("+fecha+"000)/";
+var date = new Date( parseFloat( dateVal.substr(6)));
+var fecha_print = ""+date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear()+"";
+var share_button = "<button onclick=\"window.plugins.socialsharing.share('"+titulo+"', null, null, 'http://myhostmx.azurewebsites.net/nota/"+id_nota+"')\">Compartir</button>";
+
+nota += '<h5>'+titulo+'</h5>' +
+'' +
+'<small>'+fecha_print +'</small>' +
+'<p class="text-justify">'+cuerpo+'</p>' +
+'';
+
+$("#load_notas").html(nota);
+});
+
+}
+}
+
+
 //});
 </script>
 
