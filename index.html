@@ -37,6 +37,10 @@ $.getJSON("http://myhostmx.azurewebsites.net/", {cat: cat, ajax: 'true'}, functi
 	var onclick = "newsfeed('"+data_cat+"');";
 	link_onclick = '<a href="#" onclick'+'="'+onclick+'"><i class="fa fa-refresh"></i></a>';
 	$("#news_title").html(''+data_cat+' (' + count_data_ajax + ') '+link_onclick+'');
+	} else {
+	var onclick = "newsfeed('');";
+	link_onclick = '<a href="#" onclick'+'="'+onclick+'"><i class="fa fa-refresh"></i></a>';
+	$("#news_title").html('Noticias (' + count_data_ajax + ') '+link_onclick+'');
 	}
 
 			for (var i = 0; i < count_data_ajax; i++) {
@@ -91,6 +95,7 @@ window.load = newsfeed("");
 </div>
 
 <div class="container page-header">
+<br>
 <br>
 
 <div class="btn-group">
