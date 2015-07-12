@@ -56,13 +56,24 @@ Demo App
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.file" />
     <gap:plugin name="org.apache.cordova.file-transfer" />
-    <gap:plugin name="org.apache.cordova.geolocation" />
+
     <gap:plugin name="org.apache.cordova.globalization" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+
+<!-- <gap:plugin name="org.apache.cordova.geolocation" />-->
+<gap:plugin name="org.transistorsoft.cordova.background-geolocation" />
+<gap:plugin name="com.phonegap.plugins.barcodescanner" />
+<gap:plugin name="com.phonegap.plugins.pushplugin" />
+<gap:plugin name="nl.x-services.plugins.socialsharing" />
+<!-- <gap:plugin name="com.cordova.plugins.sms" /> -->
+<gap:plugin name="info.ivanezko.phonegap.smsplugin" />
+<!-- Solo android: Envia y Recibe -->
+<gap:plugin name="tr.bel.mamak.sms_plagin" />
+
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
