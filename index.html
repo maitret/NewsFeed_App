@@ -26,7 +26,7 @@ function newsfeed(cat) {
 
 $("#load_notas").html('<div align="center"><h2><i class="fa fa-refresh fa-spin"></i></h2></div>');
 
-$.getJSON("http://myhostmx.azurewebsites.net/", {cat: cat, ajax: 'true'}, function (j) {
+$.getJSON("http://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, ajax: 'true'}, function (j) {
 			var data_ajax = j['notas'];
 			var data_cat = j['cat'];
 			var options1 = '';
@@ -60,7 +60,7 @@ function load_nota(id_nota) {
 if(load_nota != ""){
 var nota = '';
 
-$.getJSON("http://myhostmx.azurewebsites.net/ver_nota.php", {id_nota: id_nota, ajax: 'true'}, function (j) {
+$.getJSON("http://myhostmx.azurewebsites.net/get_nota.ajax.php", {id_nota: id_nota, ajax: 'true'}, function (j) {
 	var data_ajax = j['nota'][0];
 	var data_cat = j['cat'];
 	var count_data_ajax = data_ajax.length;
