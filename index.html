@@ -14,17 +14,79 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>News Feed</title>
 
+<link href="css/bootstrap.new.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 
-<div id="log"></div>
+ <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="./index.html" class="navbar-brand">News Feed/a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Cats <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="themes">
+                <li><a href="#X">X</a></li>
+                <li class="divider"></li>
+                <li><a href="#Y">Y</a></li>
+              </ul>
+            </li>
+          </ul>
+<!--
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" target="_blank"></a></li>
+          </ul>
+-->
+        </div>
+      </div>
+    </div>
 
-<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<div class="container">
+
+<div id="log"></div>
+<hr>
+<div id="load_notas"></div>
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+
+$.getJSON("http://myhostmx.azurewebsites.net/",{ ajax: 'true'}, function(j){
+//$("#"+to_get).html('<option value="">Cargando...</option>');
+var data_ajax = j['notas'];
+var options1 = ''; var options2 = '';
+var count_data_ajax = data_ajax.length;
+options1 += 'Total: '+count_data_ajax+'<hr>';
+for (var i = 0; i < count_data_ajax; i++) {
+if(data_ajax[i].valor != ""){
+options2 += '<b>' + data_ajax[i].Titulo + '</b><br>' + data_ajax[i].Cuerpo + '';
+}
+}
+
+if(get_id == "") {
+} else {
+$("#load_notas").html(options1 + options2);
+}
+
+});
+
+});
+</script>
+
+</div>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
 app.initialize();
 </script>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
