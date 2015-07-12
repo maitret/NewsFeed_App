@@ -72,10 +72,10 @@ var fecha = data_ajax['FechaHoraPub'];
 var dateVal ="/Date("+fecha+"000)/";
 var date = new Date( parseFloat( dateVal.substr(6)));
 var fecha_print = ""+date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear()+"";
-var share_button = "<button onclick=\"window.plugins.socialsharing.share('"+titulo+"', null, null, 'http://myhostmx.azurewebsites.net/nota/"+id_nota+"')\">Compartir</button>";
+var share_button = "<div class='pull-right'><button class='btn btn-primary btn-sm' onclick=\"window.plugins.socialsharing.share('"+titulo+"', null, null, 'http://myhostmx.azurewebsites.net/nota/"+id_nota+"')\">Compartir</button></div>";
 
 nota += '<h5>'+titulo+'</h5>' +
-'' +
+'' + share_button + '<br>' +
 '<small>'+fecha_print +'</small>' +
 '<p class="text-justify">'+cuerpo+'</p>' +
 '';
@@ -127,6 +127,7 @@ $("#load_notas").html(nota);
 <br>
 <br>
 
+<div align="center">
 <div class="btn-group">
   <a href="#" class="btn btn-default" id="news_title">Noticias</a>
   <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
@@ -135,7 +136,7 @@ $("#load_notas").html(nota);
 <li><a href="#" onclick="newsfeed('deportes');">Deportes</a></li>
 </ul>
 </div>
-
+</div>
 
 <div id="log"></div>
 <hr>
