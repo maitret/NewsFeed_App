@@ -142,6 +142,7 @@ document.addEventListener("backbutton", onBackKeyDown, false);
 function onBackKeyDown() {
 var j = JSON.parse(localStorage.getItem("notas"));
 $.notas_template(j);
+alert("back");
 }
 window.load = onload;
 
