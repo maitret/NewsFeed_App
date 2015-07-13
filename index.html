@@ -91,8 +91,8 @@ $("#load_notas").html(options1 + options2);
 
 if(navigator.onLine)
 {
-var info_cliente = localStorage.getItem("info_cliente");
-$.getJSON("http://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, cliente: info_cliente, ajax: 'true'}, function (j) {
+//var info_cliente = localStorage.getItem("info_cliente");
+$.getJSON("http://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, cliente: localStorage.getItem("info_cliente"), ajax: 'true'}, function (j) {
 var data_cat = j['cat'];
 if(data_cat != ""){
 localStorage.setItem(data_cat, JSON.stringify(j));
