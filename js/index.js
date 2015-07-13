@@ -160,3 +160,14 @@ $('.A').val("t:"+position.timestamp); */
 var d = new Date();
 var url_get_geo_de = "<?php echo $url_server; ?>/lib/get_latlon.php?update=1&"+window.localStorage.getItem("geo_info_2");
 }
+
+document.addEventListener("deviceready", GetDeviceInfo, false);
+function GetDeviceInfo() {
+
+}
+
+if(typeof(device) !== "undefined") {
+localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push"));
+} else {
+localStorage.setItem("info_cliente", "&"+window.localStorage.getItem("geo_info_2")+"");
+}

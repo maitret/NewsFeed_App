@@ -28,20 +28,6 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
 
-
-document.addEventListener("deviceready", GetDeviceInfo, false);
-function GetDeviceInfo() {
-
-}
-
-if(typeof(device) !== "undefined") {
-localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push"));
-} else {
-localStorage.setItem("info_cliente", "&"+window.localStorage.getItem("geo_info_2")+"");
-}
-
-//localStorage.setItem("info_cliente", "&platform="+device.platform+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push"));
-
 $.newsfeed = function(cat){
 
 $("#load_notas").html('<div align="center"><h2><i class="fa fa-refresh fa-spin"></i></h2></div>');
@@ -91,8 +77,8 @@ $("#load_notas").html(options1 + options2);
 
 if(navigator.onLine)
 {
-//var info_cliente = localStorage.getItem("info_cliente");
-$.getJSON("http://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, cliente: localStorage.getItem("info_cliente"), ajax: 'true'}, function (j) {
+var info_cliente = localStorage.getItem("info_cliente");
+$.getJSON("http://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, cliente: info_cliente, ajax: 'true'}, function (j) {
 var data_cat = j['cat'];
 if(data_cat != ""){
 localStorage.setItem(data_cat, JSON.stringify(j));
