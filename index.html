@@ -24,14 +24,19 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
 
-//localStorage.setItem("info_cliente", "&"+window.localStorage.getItem("geo_info_2")+"");
+
 document.addEventListener("deviceready", GetDeviceInfo, false);
 function GetDeviceInfo() {
-//localStorage.setItem("info_cliente", "&platform="+device.platform+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push"));
+
 }
 
+if(typeof(device) !== "undefined") {
 localStorage.setItem("info_cliente", "&platform="+device.platform+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push"));
+} else {
+localStorage.setItem("info_cliente", "&"+window.localStorage.getItem("geo_info_2")+"");
+}
 
+//localStorage.setItem("info_cliente", "&platform="+device.platform+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push"));
 
 $.newsfeed = function(cat){
 
