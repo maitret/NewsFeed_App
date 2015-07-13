@@ -24,10 +24,12 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 //$(document).ready(function() {
 function newsfeed(cat) {
 $("#load_notas").html('<div align="center"><h2><i class="fa fa-refresh fa-spin"></i></h2></div>');
+
 $.fn.notas_template_nointernet = function() {
 $("#load_notas").html("No se detecto conexion a internet, reintente nuevamente");
 }
-function notas_template(j){
+
+$.fn.notas_template = function(j){
 var data_cat = j['cat'];
 if(data_cat != ""){
 localStorage.setItem(data_cat, JSON.stringify(j));
@@ -75,12 +77,12 @@ localStorage.setItem(data_cat, JSON.stringify(j));
 } else {
 localStorage.setItem("notas", JSON.stringify(j));
 }
-notas_template(j);
+$.notas_template(j);
 });
 }
 else {
 var j = JSON.parse(localStorage.getItem("notas"));
-notas_template(j);
+$.notas_template(j);
 }
 
 }
@@ -121,6 +123,17 @@ $.notas_template_nointernet()
 }
 
 
+function onLoad() {
+document.addEventListener("deviceready", onDeviceReady, false);
+}
+function onDeviceReady() {
+document.addEventListener("backbutton", onBackKeyDown, false);
+}
+function onBackKeyDown() {
+var j = JSON.parse(localStorage.getItem("notas"));
+$.notas_template(j);
+}
+window.load = onload;
 //});
 </script>
 
