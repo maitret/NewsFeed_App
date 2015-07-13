@@ -17,15 +17,21 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 <link href="css/bootstrap.new.css" rel="stylesheet">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="js/purl.js"></script>
 </head>
 <body>
 
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
 
+window.info_cliente = "&"+localStorage.getItem("token_push")+"";
+document.addEventListener("deviceready", GetDeviceInfo, false);
+function GetDeviceInfo() {
+window.info_cliente = "&platform="+device.platform+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push");
+}
+
 $.newsfeed = function(cat){
 
-var info_cliente = "&platform="+device.platform+"&model="+device.model+";
 $("#load_notas").html('<div align="center"><h2><i class="fa fa-refresh fa-spin"></i></h2></div>');
 
 $.notas_template_nointernet = function() {
@@ -35,10 +41,10 @@ $("#load_notas").html("No se detecto conexion a internet, reintente nuevamente")
 $.notas_template = function(j){
 var data_cat = j['cat'];
 if(data_cat != ""){
-localStorage.setItem(data_cat, JSON.stringify(j));
+//localStorage.setItem(data_cat, JSON.stringify(j));
 j = JSON.parse(localStorage.getItem(data_cat));
 } else {
-localStorage.setItem("notas", JSON.stringify(j));
+//localStorage.setItem("notas", JSON.stringify(j));
 j = JSON.parse(localStorage.getItem("notas"));
 }
 var data_ajax = j['notas'];
@@ -74,7 +80,7 @@ $("#load_notas").html(options1 + options2);
 if(navigator.onLine)
 {
 
-$.getJSON("http://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, cliente: info_cliente, ajax: 'true'}, function (j) {
+$.getJSON("http://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, cliente: window.info_cliente, ajax: 'true'}, function (j) {
 var data_cat = j['cat'];
 if(data_cat != ""){
 localStorage.setItem(data_cat, JSON.stringify(j));
