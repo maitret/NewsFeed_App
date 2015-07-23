@@ -79,7 +79,7 @@ $("#load_notas").html(options1 + options2);
 if(navigator.onLine)
 {
 var info_cliente = localStorage.getItem("info_cliente");
-$.getJSON("https://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, cliente: info_cliente, ajax: 'true'}, function (j) {
+$.getJSON("http://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, cliente: info_cliente, ajax: 'true'}, function (j) {
 var data_cat = j['cat'];
 if(data_cat != ""){
 localStorage.setItem(data_cat, JSON.stringify(j));
@@ -103,7 +103,7 @@ $.load_nota = function(id_nota) {
 if(navigator.onLine) {
 	if (id_nota != "") {
 		var nota = '';
-		$.getJSON("https://myhostmx.azurewebsites.net/get_nota.ajax.php", {
+		$.getJSON("http://myhostmx.azurewebsites.net/get_nota.ajax.php", {
 			id_nota: id_nota,
 			ajax: 'true'
 		}, function (j) {
